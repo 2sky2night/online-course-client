@@ -1,4 +1,4 @@
-import { Page } from "@/constant";
+import { Page } from "@/constants";
 import { Button, Result } from "antd";
 import { useNavigate } from "react-router-dom";
 
