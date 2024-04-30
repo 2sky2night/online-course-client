@@ -7,7 +7,8 @@
     "skipLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@/*": ["src/*"]
+      "@/*": ["src/*"],
+      "@request": ["src/utils/request/index.ts"]
     },
     "types": ["antd/es"],
     /* Bundler mode */

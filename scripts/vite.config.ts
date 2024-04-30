@@ -30,10 +30,11 @@ export default defineConfig(async ({ command, mode }: ConfigEnv) => {
     build: {
       outDir: resolve(__dirname, `../${entryConfig.outDir}`),
     },
-    // 路径重写
+    // 路径别名
     resolve: {
       alias: {
-        "@": resolve(__dirname, "src"),
+        "@": resolve(__dirname, "../src"),
+        "@request": resolve(__dirname, "../src/utils/request/index.ts"),
       },
     },
     // 定义全局变量
