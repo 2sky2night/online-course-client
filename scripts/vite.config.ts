@@ -30,6 +30,8 @@ export default defineConfig(async ({ command, mode }: ConfigEnv) => {
     build: {
       outDir: resolve(__dirname, `../${entryConfig.outDir}`),
     },
+    // 配置public文件夹的路径
+    publicDir: resolve(__dirname, "../public"),
     // 路径别名
     resolve: {
       alias: {
