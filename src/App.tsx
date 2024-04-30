@@ -1,5 +1,7 @@
+import Layout from "./layout";
+
 function App() {
-  return <>123</>;
+  return <Layout />;
 }
 
 export default App;
