@@ -2,7 +2,7 @@ import Layout from "@/layout";
 import Index from "@/pages/index";
 import type { RouteItem } from "./types";
 import NotFoundPage from "@/pages/error/404";
-import { Page } from "@/constants";
+import { Page } from "@/enums";
 
 export const routes: RouteItem[] = [
   {
