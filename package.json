@@ -15,6 +15,7 @@
     "openapi": "node --loader ts-node/esm openapi.config.ts"
   },
   "dependencies": {
+    "@ant-design/icons": "^5.3.6",
     "antd": "^5.15.0",
     "antd-style": "^3.6.2",
     "axios": "^1.6.8",
