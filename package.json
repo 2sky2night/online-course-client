@@ -11,7 +11,8 @@
     "dev:build": "vite build -c ./scripts/vite.config.ts -m development --minify false",
     "preview": "vite preview",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "lint:style": "stylelint \"./**/*.{css,scss,html}\" --fix"
+    "lint:style": "stylelint \"./**/*.{css,scss,html}\" --fix",
+    "openapi": "node --loader ts-node/esm openapi.config.ts"
   },
   "dependencies": {
     "antd": "^5.15.0",
