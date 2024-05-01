@@ -8,6 +8,7 @@ import {
   authUserControllerGenerateCode as getCode,
   authUserControllerEmailLogin as loginByCode,
 } from "@/servers/go_study_server/authUser";
+import { OAuthUrl } from "@/constants";
 import { useUserStore } from "@/store";
 
 interface Props {
@@ -117,13 +118,18 @@ export function LoginForm({ onSubmit }: Props) {
       </Divider>
       <Flex justify="center">
         <Space size="large">
-          <GithubIcon className={styles.icon} />
+          <GithubIcon
+            className={styles.icon}
+            onClick={() => (globalThis.location.href = OAuthUrl.github)}
+          />
           <img
             className={styles.imgIcon}
-            src="/images/alipay.svg"></img>
+            src="/images/alipay.svg"
+            onClick={() => (globalThis.location.href = OAuthUrl.alipay)}></img>
           <img
             className={styles.imgIcon}
-            src="/images/gitee.svg"></img>
+            src="/images/gitee.svg"
+            onClick={() => (globalThis.location.href = OAuthUrl.gitee)}></img>
         </Space>
       </Flex>
     </div>
