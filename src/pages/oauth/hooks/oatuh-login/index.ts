@@ -1,5 +1,6 @@
-import { Page } from "@/enums";
+import { MittEvent, Page } from "@/enums";
 import { useUserStore } from "@/store";
+import emitter from "@/utils/mitt";
 import { useEffect } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 
@@ -18,12 +19,19 @@ export const useOAuthLogin = (
   const [search] = useSearchParams();
   /** 登录接口 */
   const login = useUserStore(s => s.login);
+  /** 登录失败的回调 */
+  const handleLoginFail = () => {
+    // TODO 1.返回上一次浏览的页面
+    navigate(Page.Index, { replace: true });
+    // 2.弹出登录模态框
+    emitter.emit(MittEvent.OPEN_LOGIN_MODAL);
+  };
   /** 完整逻辑 */
   const oauthLogin = async () => {
     const code = search.get(codeKey);
     if (!code) {
-      // TODO 没有解析出授权码，返回首页,弹出登录框(后续会修改)
-      return navigate(Page.Index, { replace: true });
+      // 没有解析出授权码
+      return handleLoginFail();
     }
     try {
       // 第三方登录
@@ -33,8 +41,8 @@ export const useOAuthLogin = (
       // TODO 登录成功，返回首页(后续会修改)
       navigate(Page.Index, { replace: true });
     } catch (error) {
-      // TODO 登录失败，返回首页,弹出登录框(后续会修改)
-      navigate(Page.Index, { replace: true });
+      // 登录失败
+      handleLoginFail();
     }
   };
   useEffect(() => {
