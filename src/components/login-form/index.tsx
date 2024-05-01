@@ -48,7 +48,7 @@ export function LoginForm({ onSubmit }: Props) {
     const { email, code } = formData;
     try {
       const res = await loginByCode({ email, code });
-      userState.login(res?.data?.access_token || "");
+      await userState.login(res?.data?.access_token || "");
       onSubmit();
     } finally {
       setLoading(false);

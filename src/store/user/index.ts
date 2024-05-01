@@ -16,6 +16,7 @@ export const useUserStore = create<UserState>(set => {
       } catch (error) {
         // 获取用户信息失败，登出账号
         this.logout();
+        return Promise.reject();
       }
     },
     logout() {
