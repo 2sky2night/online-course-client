@@ -1,5 +1,5 @@
 /** 本机ip地址 */
-export const LOCALHOST_IP = "192.168.109.91";
+export const LOCALHOST_IP = "192.168.161.91";
 
 /** 前端服务器端口号 */
 export const FRONTEND_PORT = "5173";
