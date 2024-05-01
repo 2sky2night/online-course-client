@@ -3,12 +3,13 @@ import { useAuthRoute } from "@/hooks";
 import { Outlet } from "react-router-dom";
 import { LoginModal } from "@/components";
 import { useState } from "react";
+import { Button } from "antd";
 // import { useNavigate } from "react-router-dom";
 
 export default function Main() {
   // const navigate = useNavigate();
   // 是否展示登录的模态框
-  const [show, setShow] = useState(true);
+  const [show, setShow] = useState(false);
   // 路由后置守卫
   useAuthRoute(route => {
     // 1.修改网页标题
@@ -26,6 +27,7 @@ export default function Main() {
     <>
       <div>
         <div className="max-w-7xl m-auto">
+          <Button onClick={() => setShow(true)}>打开登录弹窗</Button>
           <Outlet />
         </div>
       </div>

@@ -8,4 +8,10 @@ export enum MittEvent {
 export enum Page {
   /** 首页 */
   Index = "/",
+  /** 支付宝第三方登陆 */
+  OAuthAlipay = "/oauth/alipay",
+  /** gitee第三方登陆 */
+  OAuthGitee = "/oauth/gitee",
+  /** github第三方登陆 */
+  OAuthGithub = "/oauth/github",
 }
