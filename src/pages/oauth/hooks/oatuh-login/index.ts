@@ -3,6 +3,7 @@ import { useUserStore } from "@/store";
 import emitter from "@/utils/mitt";
 import { useEffect } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
+import { PagesRecall } from "../../utils/pages-recall";
 
 /**
  * 第三方登录的钩子(在严格模式下会导致登录两次问题)
@@ -19,10 +20,17 @@ export const useOAuthLogin = (
   const [search] = useSearchParams();
   /** 登录接口 */
   const login = useUserStore(s => s.login);
+  /** 恢复上一次浏览的页面 */
+  const handleRecallPage = () => {
+    const path = PagesRecall.getKey() || Page.Index;
+    navigate(path, { replace: true });
+    // 清除记录
+    PagesRecall.removeKey();
+  };
   /** 登录失败的回调 */
   const handleLoginFail = () => {
-    // TODO 1.返回上一次浏览的页面
-    navigate(Page.Index, { replace: true });
+    // 1.返回到上一次浏览的页面
+    handleRecallPage();
     // 2.弹出登录模态框
     emitter.emit(MittEvent.OPEN_LOGIN_MODAL);
   };
@@ -38,8 +46,8 @@ export const useOAuthLogin = (
       const token = await handleLogin(code);
       // 获取用户信息
       await login(token);
-      // TODO 登录成功，返回首页(后续会修改)
-      navigate(Page.Index, { replace: true });
+      // 登录成功
+      handleRecallPage();
     } catch (error) {
       // 登录失败
       handleLoginFail();

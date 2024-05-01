@@ -10,6 +10,8 @@ import {
 } from "@/servers/go_study_server/authUser";
 import { OAuthUrl } from "@/constants";
 import { useUserStore } from "@/store";
+import { PagesRecall } from "@/pages/oauth/utils/pages-recall";
+import { useLocation } from "react-router-dom";
 
 interface Props {
   /** 登录成功的回调 */
@@ -18,6 +20,7 @@ interface Props {
 
 export function LoginForm({ onSubmit }: Props) {
   const { styles } = useLoginFormStyles();
+  const location = useLocation();
   /** 用户仓库 */
   const userState = useUserStore();
   /** 加载中 */
@@ -64,6 +67,17 @@ export function LoginForm({ onSubmit }: Props) {
       if (field === "code") setFormData({ ...formData, code: value });
       else if (field === "email") setFormData({ ...formData, email: value });
     }
+  };
+  const handleGoOAuth = (type: "gitee" | "github" | "alipay") => {
+    const urlMap = {
+      gitee: OAuthUrl.gitee,
+      github: OAuthUrl.github,
+      alipay: OAuthUrl.alipay,
+    };
+    // 记录当前访问的页面(路径和查询参数)
+    PagesRecall.setKey(location.pathname + location.search);
+    const url = urlMap[type];
+    globalThis.location.href = url;
   };
   return (
     <div>
@@ -120,16 +134,16 @@ export function LoginForm({ onSubmit }: Props) {
         <Space size="large">
           <GithubIcon
             className={styles.icon}
-            onClick={() => (globalThis.location.href = OAuthUrl.github)}
+            onClick={() => handleGoOAuth("github")}
           />
           <img
             className={styles.imgIcon}
             src="/images/alipay.svg"
-            onClick={() => (globalThis.location.href = OAuthUrl.alipay)}></img>
+            onClick={() => handleGoOAuth("alipay")}></img>
           <img
             className={styles.imgIcon}
             src="/images/gitee.svg"
-            onClick={() => (globalThis.location.href = OAuthUrl.gitee)}></img>
+            onClick={() => handleGoOAuth("gitee")}></img>
         </Space>
       </Flex>
     </div>
