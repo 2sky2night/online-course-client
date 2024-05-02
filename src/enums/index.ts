@@ -15,3 +15,9 @@ export enum Page {
   /** github第三方登陆 */
   OAuthGithub = "/oauth/github",
 }
+
+/** zustand持久化存储key */
+export enum ZustandKey {
+  /** 用户 */
+  User = "user-store",
+}

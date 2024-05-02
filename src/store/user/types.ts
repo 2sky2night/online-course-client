@@ -7,4 +7,6 @@ export interface UserState {
   login: (token: string) => Promise<void>;
   /** 登出 */
   logout: () => void;
+  /** 是否登录了 */
+  isLogin: () => boolean;
 }

@@ -1,4 +1,4 @@
-// import { Page } from "@/constant";
+import { Page } from "@/enums";
 import { useAuthRoute } from "@/hooks";
 import { Outlet } from "react-router-dom";
 import { LoginModal } from "@/components";
@@ -6,12 +6,16 @@ import { useEffect, useState } from "react";
 import { Button } from "antd";
 import emitter from "@/utils/mitt";
 import { MittEvent } from "@/enums";
-// import { useNavigate } from "react-router-dom";
+import { useUserStore } from "@/store";
+import { useNavigate } from "react-router-dom";
+import { AuthMeta, NoAuthMeta } from "@/router/types";
 
 export default function Main() {
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
   // 是否展示登录的模态框
   const [show, setShow] = useState(false);
+  /** 是否登录了 */
+  const getIsLogin = useUserStore(s => s.isLogin);
   /** 打开登录弹窗 */
   const handleOpenLoginModal = () => {
     setShow(true);
@@ -25,8 +29,19 @@ export default function Main() {
     ]
       .filter(item => item)
       .join(" - ");
-    // TODO 2.判断是否有权限访问页面？无权限怎么办？
-    // 无权限弹出登录弹窗，页面返回首页
+    // 2.路由鉴权
+    if (!route || !route?.meta) return;
+    const isLogin = getIsLogin();
+    if (isLogin && (route.meta as NoAuthMeta).noLogin) {
+      // 登录了，访问了未登录了才能访问的页面
+      // 返回首页
+      navigate(Page.Index, { replace: true });
+    } else if (!isLogin && (route.meta as AuthMeta).needAuth) {
+      // 返回首页
+      navigate(Page.Index, { replace: true });
+      // 打开弹窗
+      handleOpenLoginModal();
+    }
   });
   // 订阅打开登录弹窗的事件
   useEffect(() => {

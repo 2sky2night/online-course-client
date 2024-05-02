@@ -5,6 +5,7 @@ import GiteePage from "@/pages/oauth/pages/gitee";
 import GithubPage from "@/pages/oauth/pages/github";
 import type { RouteItem } from "./types";
 import NotFoundPage from "@/pages/error/404";
+import UserPage from "@/pages/user";
 
 export const routes: RouteItem[] = [
   {
@@ -15,6 +16,14 @@ export const routes: RouteItem[] = [
     },
   },
   {
+    path: "/user",
+    element: <UserPage />,
+    meta: {
+      title: "我的",
+      needAuth: true,
+    },
+  },
+  {
     path: "/oauth",
     children: [
       {
@@ -22,6 +31,7 @@ export const routes: RouteItem[] = [
         element: <AlipayPage />,
         meta: {
           title: "支付宝登录",
+          noLogin: true,
         },
       },
       {
@@ -29,6 +39,7 @@ export const routes: RouteItem[] = [
         element: <GiteePage />,
         meta: {
           title: "Gitee登录",
+          noLogin: true,
         },
       },
       {
@@ -36,6 +47,7 @@ export const routes: RouteItem[] = [
         element: <GithubPage />,
         meta: {
           title: "Github登录",
+          noLogin: true,
         },
       },
     ],
