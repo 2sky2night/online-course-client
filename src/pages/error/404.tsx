@@ -1,6 +1,7 @@
-import { Page } from "@/enums";
 import { Button, Result } from "antd";
 import { useNavigate } from "react-router-dom";
+
+import { Page } from "@/enums";
 
 export default function NotFoundPage() {
   const navigate = useNavigate();

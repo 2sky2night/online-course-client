@@ -1,7 +1,8 @@
+import { CloseOutlined as CloseIcon } from "@ant-design/icons";
 import { Modal } from "antd";
+
 import { LoginForm } from "../";
 import { useLoginModalStyles } from "./styles";
-import { CloseOutlined as CloseIcon } from "@ant-design/icons";
 
 interface Props {
   /** 是否显示模态框 */

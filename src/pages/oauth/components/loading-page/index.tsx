@@ -1,6 +1,7 @@
-import React from "react";
-import { useLoadingPageStyles } from "./styles";
 import { LoadingOutlined as LoadingIcon } from "@ant-design/icons";
+import React from "react";
+
+import { useLoadingPageStyles } from "./styles";
 
 interface Props {
   /** 平台名称 */

@@ -1,4 +1,4 @@
-import { Logo, Dropdown } from "./components";
+import { Dropdown, Logo } from "./components";
 
 export default function Header() {
   return (

@@ -1,14 +1,16 @@
-import { useUserStore } from "@/store";
-import { Avatar, Dropdown as AntdDropDown, Modal } from "antd";
-import { useMemo, cloneElement, useState } from "react";
-import { dropDownRender } from "./config";
-import type { UserInfo } from "@/types";
 import type { MenuProps } from "antd";
-import { useDropDownStyles } from "./styles";
-import { DropDownKey } from "./enums";
-import emitter from "@/utils/mitt";
-import { MittEvent, Page } from "@/enums";
+import { Avatar, Dropdown as AntdDropDown, Modal } from "antd";
+import { cloneElement, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
+
+import { MittEvent, Page } from "@/enums";
+import { useUserStore } from "@/store";
+import type { UserInfo } from "@/types";
+import emitter from "@/utils/mitt";
+
+import { dropDownRender } from "./config";
+import { DropDownKey } from "./enums";
+import { useDropDownStyles } from "./styles";
 
 export function Dropdown() {
   const navigate = useNavigate();

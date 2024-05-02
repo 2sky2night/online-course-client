@@ -1,11 +1,12 @@
 import Layout from "@/layout";
+import NotFoundPage from "@/pages/error/404";
 import Index from "@/pages/index";
 import AlipayPage from "@/pages/oauth/pages/alipay";
 import GiteePage from "@/pages/oauth/pages/gitee";
 import GithubPage from "@/pages/oauth/pages/github";
-import type { RouteItem } from "./types";
-import NotFoundPage from "@/pages/error/404";
 import UserPage from "@/pages/user";
+
+import type { RouteItem } from "./types";
 
 export const routes: RouteItem[] = [
   {

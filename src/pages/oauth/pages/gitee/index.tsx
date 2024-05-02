@@ -1,6 +1,7 @@
-import { useOAuthLogin } from "../../hooks";
 import { authUserControllerGiteeLogin as giteeLogin } from "@/servers/go_study_server/authUser";
+
 import { LoadingPage } from "../../components";
+import { useOAuthLogin } from "../../hooks";
 
 export default function GiteePage() {
   useOAuthLogin("code", code => {

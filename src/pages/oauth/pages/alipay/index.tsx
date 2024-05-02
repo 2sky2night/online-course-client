@@ -1,4 +1,5 @@
 import { authUserControllerAlipayLogin as alipayLogin } from "@/servers/go_study_server/authUser";
+
 import { LoadingPage } from "../../components";
 import { useOAuthLogin } from "../../hooks";
 

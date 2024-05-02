@@ -1,5 +1,7 @@
-import { useSetting } from "@/store";
 import { ThemeProvider } from "antd-style";
+
+import { useSetting } from "@/store";
+
 import Header from "./header";
 import Main from "./main";
 import { useLayoutStyles } from "./styles";
