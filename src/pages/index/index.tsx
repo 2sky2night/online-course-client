@@ -1,3 +1,9 @@
+import { CoursePanel } from "./components";
+
 export default function Index() {
-  return <div>Index</div>;
+  return (
+    <div>
+      <CoursePanel />
+    </div>
+  );
 }
