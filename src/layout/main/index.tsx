@@ -1,14 +1,14 @@
-import { Page } from "@/enums";
-import { useAuthRoute } from "@/hooks";
-import { Outlet } from "react-router-dom";
-import { LoginModal } from "@/components";
-import { useEffect, useState } from "react";
 import { Button } from "antd";
-import emitter from "@/utils/mitt";
+import { useEffect, useState } from "react";
+import { Outlet, useNavigate } from "react-router-dom";
+
+import { LoginModal } from "@/components";
+import { Page } from "@/enums";
 import { MittEvent } from "@/enums";
-import { useUserStore } from "@/store";
-import { useNavigate } from "react-router-dom";
+import { useAuthRoute } from "@/hooks";
 import { AuthMeta, NoAuthMeta } from "@/router/types";
+import { useUserStore } from "@/store";
+import emitter from "@/utils/mitt";
 
 export default function Main() {
   const navigate = useNavigate();

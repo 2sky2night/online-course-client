@@ -1,8 +1,10 @@
+import { useEffect } from "react";
+import { useNavigate, useSearchParams } from "react-router-dom";
+
 import { MittEvent, Page } from "@/enums";
 import { useUserStore } from "@/store";
 import emitter from "@/utils/mitt";
-import { useEffect } from "react";
-import { useNavigate, useSearchParams } from "react-router-dom";
+
 import { PagesRecall } from "../../utils/pages-recall";
 
 /**

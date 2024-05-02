@@ -1,4 +1,5 @@
 import { create } from "zustand";
+
 import { SettingState } from "./type";
 
 /** 全局设置的仓库 */

@@ -1,7 +1,8 @@
+import { useEffect, useState } from "react";
 import { matchPath, useLocation } from "react-router-dom";
+
 import { routes } from "@/router/routes";
 import { RouteItem } from "@/router/types";
-import { useEffect, useState } from "react";
 
 type RouteChange = (activeRoute: RouteItem | null) => void;
 

@@ -1,8 +1,10 @@
+import { message } from "antd";
 import axios, { AxiosRequestConfig } from "axios";
+
+import { useUserStore } from "@/store";
+
 import { Token } from "../token";
 import { ResponseError } from "./types";
-import { useUserStore } from "@/store";
-import { message } from "antd";
 
 const instance = axios.create({
   baseURL: import.meta.env.VITE_SERVER_URL || "/",

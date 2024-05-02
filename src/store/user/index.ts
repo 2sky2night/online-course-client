@@ -1,9 +1,11 @@
 import { create } from "zustand";
-import type { UserState } from "./types";
+import { createJSONStorage, persist } from "zustand/middleware";
+
+import { ZustandKey } from "@/enums";
 import { userControllerInfo as getUserInfo } from "@/servers/go_study_server/user";
 import { Token } from "@/utils/token";
-import { persist, createJSONStorage } from "zustand/middleware";
-import { ZustandKey } from "@/enums";
+
+import type { UserState } from "./types";
 
 /** 用户数据的仓库 */
 export const useUserStore = create(
