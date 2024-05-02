@@ -3,6 +3,7 @@ import { Dropdown as AntdDropDown, Modal } from "antd";
 import { cloneElement, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
+import { Avatar } from "@/components";
 import { MittEvent, Page } from "@/enums";
 import { useSettingStore, useUserStore } from "@/store";
 import type { UserInfo } from "@/types";
@@ -11,7 +12,6 @@ import emitter from "@/utils/mitt";
 import { dropDownRender } from "./config";
 import { DropDownKey } from "./enums";
 import { useDropDownStyles } from "./styles";
-import { Avatar } from "@/components";
 
 export function Dropdown() {
   const navigate = useNavigate();

@@ -8,6 +8,7 @@ import { useAuthRoute } from "@/hooks";
 import { AuthMeta, NoAuthMeta } from "@/router/types";
 import { useUserStore } from "@/store";
 import emitter from "@/utils/mitt";
+
 import { useMainStyles } from "./styles";
 
 export default function Main() {

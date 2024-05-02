@@ -1,13 +1,14 @@
 import {
   LoginOutlined as LoginIcon,
   LogoutOutlined as LogoutIcon,
-  SunOutlined as LightIcon,
   MoonOutlined as DrarkIcon,
+  SunOutlined as LightIcon,
 } from "@ant-design/icons";
 import type { MenuProps } from "antd";
 
-import { DropDownKey } from "./enums";
 import { useSettingStore } from "@/store";
+
+import { DropDownKey } from "./enums";
 
 const ThemeIcon = () => {
   const isDark = useSettingStore(s => s.isDark);

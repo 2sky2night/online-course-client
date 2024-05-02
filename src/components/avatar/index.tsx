@@ -1,6 +1,7 @@
-import { Avatar as AntdAvatar } from "antd";
-import type { AvatarProps } from "antd";
 import { UserOutlined as UserIcon } from "@ant-design/icons";
+import type { AvatarProps } from "antd";
+import { Avatar as AntdAvatar } from "antd";
+
 import { IS_ABSOLUTE_PATH, STATIC_SERVER_URL } from "@/constants";
 
 interface Props {
