@@ -1,10 +1,11 @@
 import { createStyles } from "antd-style";
 
-export const useLayoutStyles = createStyles(({ token }) => {
+export const useLayoutStyles = createStyles(() => {
   return {
     layout: {
-      background: token.colorBgBase,
       height: "100svh",
+      display: "flex",
+      flexDirection: "column",
     },
   };
 });

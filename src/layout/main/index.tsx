@@ -1,4 +1,3 @@
-import { Button } from "antd";
 import { useEffect, useState } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 
@@ -9,8 +8,10 @@ import { useAuthRoute } from "@/hooks";
 import { AuthMeta, NoAuthMeta } from "@/router/types";
 import { useUserStore } from "@/store";
 import emitter from "@/utils/mitt";
+import { useMainStyles } from "./styles";
 
 export default function Main() {
+  const { styles } = useMainStyles();
   const navigate = useNavigate();
   // 是否展示登录的模态框
   const [show, setShow] = useState(false);
@@ -54,9 +55,8 @@ export default function Main() {
 
   return (
     <>
-      <div>
-        <div className="max-w-7xl m-auto">
-          <Button onClick={handleOpenLoginModal}>打开登录弹窗</Button>
+      <div className={styles.mainContainer}>
+        <div className="max-w-7xl m-auto py-3 px-2">
           <Outlet />
         </div>
       </div>

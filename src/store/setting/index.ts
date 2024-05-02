@@ -6,7 +6,7 @@ import { ZustandKey } from "@/enums";
 import { SettingState } from "./type";
 
 /** 全局设置的仓库 */
-export const useSetting = create(
+export const useSettingStore = create(
   persist<SettingState, [], [], { isDark: boolean }>(
     set => {
       return {
@@ -17,6 +17,9 @@ export const useSetting = create(
               isDark,
             };
           });
+        },
+        toggleTheme: () => {
+          set(state => ({ isDark: !state.isDark }));
         },
       };
     },

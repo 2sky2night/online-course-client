@@ -4,7 +4,7 @@ import { cloneElement, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { MittEvent, Page } from "@/enums";
-import { useUserStore } from "@/store";
+import { useSettingStore, useUserStore } from "@/store";
 import type { UserInfo } from "@/types";
 import emitter from "@/utils/mitt";
 
@@ -14,6 +14,8 @@ import { useDropDownStyles } from "./styles";
 
 export function Dropdown() {
   const navigate = useNavigate();
+  /** 切换主题 */
+  const toggleTheme = useSettingStore(s => s.toggleTheme);
   const { isLogin: getIsLogin, userInfo, logout } = useUserStore();
   const { styles } = useDropDownStyles();
   // 是否展示退出模态框
@@ -29,8 +31,7 @@ export function Dropdown() {
   /** 点击某个菜单项的回调映射 */
   const handlerMap = {
     [DropDownKey.THEME]: () => {
-      // TODO 主题切换
-      console.log("主题切换");
+      toggleTheme();
     },
     [DropDownKey.LOGIN]: () => {
       // 打开模态框

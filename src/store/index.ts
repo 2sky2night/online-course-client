@@ -1,2 +1,2 @@
-export { useSetting } from "./setting";
+export { useSettingStore } from "./setting";
 export { useUserStore } from "./user";
