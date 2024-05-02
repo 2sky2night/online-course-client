@@ -1,3 +1,7 @@
+import { APP_NAME } from "@/constants";
+import { useLogoStyles } from "./styles";
+
 export function Logo() {
-  return <span>趣学</span>;
+  const { styles } = useLogoStyles();
+  return <span className={styles.logo}>{APP_NAME}</span>;
 }

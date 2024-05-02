@@ -13,3 +13,6 @@ export const OAuth_URL = {
   /** 支付宝第三方登录请求链接(支付宝会跳地址不能是本地域名或127.0.0.1，所以只能设置为本机ip) */
   alipay: `https://openauth.alipay.com/oauth2/publicAppAuthorize.htm?app_id=2021004132674105&scope=auth_user&redirect_uri=http://${LOCALHOST_IP}:5173/oauth/alipay&state=init`,
 };
+
+/** APP名称 */
+export const APP_NAME = "微课视频网站";
