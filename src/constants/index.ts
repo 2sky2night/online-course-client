@@ -5,7 +5,7 @@ export const LOCALHOST_IP = "192.168.161.91";
 export const FRONTEND_PORT = "5173";
 
 /** 第三方登录请求地址 */
-export const OAuthUrl = {
+export const OAuth_URL = {
   /** github第三方登录请求链接 */
   github: `https://github.com/login/oauth/authorize?client_id=ed626ce4c22ba6bb731d&redirect_uri=http://localhost:${FRONTEND_PORT}/oauth/github`,
   /** gitee第三方登录请求链接 */

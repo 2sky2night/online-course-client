@@ -1,17 +1,19 @@
-import { Button, Divider, Flex, Form, FormInstance, Space } from "antd";
 import { GithubFilled as GithubIcon } from "@ant-design/icons";
-import { useLoginFormStyles } from "./styles";
-import { Captcha } from "../";
+import { Button, Divider, Flex, Form, FormInstance, Space } from "antd";
 import { useRef, useState } from "react";
-import { codeRule, emailRule } from "./config";
-import {
-  authUserControllerGenerateCode as getCode,
-  authUserControllerEmailLogin as loginByCode,
-} from "@/servers/go_study_server/authUser";
-import { OAuthUrl } from "@/constants";
-import { useUserStore } from "@/store";
-import { PagesRecall } from "@/pages/oauth/utils/pages-recall";
 import { useLocation } from "react-router-dom";
+
+import { OAuth_URL } from "@/constants";
+import { PagesRecall } from "@/pages/oauth/utils/pages-recall";
+import {
+  authUserControllerEmailLogin as loginByCode,
+  authUserControllerGenerateCode as getCode,
+} from "@/servers/go_study_server/authUser";
+import { useUserStore } from "@/store";
+
+import { Captcha } from "../";
+import { codeRule, emailRule } from "./config";
+import { useLoginFormStyles } from "./styles";
 
 interface Props {
   /** 登录成功的回调 */
@@ -70,9 +72,9 @@ export function LoginForm({ onSubmit }: Props) {
   };
   const handleGoOAuth = (type: "gitee" | "github" | "alipay") => {
     const urlMap = {
-      gitee: OAuthUrl.gitee,
-      github: OAuthUrl.github,
-      alipay: OAuthUrl.alipay,
+      gitee: OAuth_URL.gitee,
+      github: OAuth_URL.github,
+      alipay: OAuth_URL.alipay,
     };
     // 记录当前访问的页面(路径和查询参数)
     PagesRecall.setKey(location.pathname + location.search);
