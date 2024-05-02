@@ -16,3 +16,14 @@ export const OAuth_URL = {
 
 /** APP名称 */
 export const APP_NAME = "微课视频网站";
+
+/**
+ * 检测是否为绝对路径的正则
+ */
+export const IS_ABSOLUTE_PATH = /^(?:\/|[a-zA-Z]:\\)/;
+
+/**
+ * 静态服务器请求路径
+ */
+export const STATIC_SERVER_URL = import.meta.env
+  .VITE_STATIC_SERVER_URL as string;

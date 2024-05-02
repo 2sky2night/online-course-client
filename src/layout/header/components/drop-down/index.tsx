@@ -1,5 +1,5 @@
 import type { MenuProps } from "antd";
-import { Avatar, Dropdown as AntdDropDown, Modal } from "antd";
+import { Dropdown as AntdDropDown, Modal } from "antd";
 import { cloneElement, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -11,6 +11,7 @@ import emitter from "@/utils/mitt";
 import { dropDownRender } from "./config";
 import { DropDownKey } from "./enums";
 import { useDropDownStyles } from "./styles";
+import { Avatar } from "@/components";
 
 export function Dropdown() {
   const navigate = useNavigate();
@@ -79,7 +80,7 @@ export function Dropdown() {
                 <div
                   className={styles.userBox}
                   onClick={e => e.stopPropagation()}>
-                  {avatar ? <Avatar src={avatar} /> : <Avatar>我</Avatar>}
+                  <Avatar src={avatar} />
                   <div className={styles.userName}>{user_name}</div>
                 </div>
                 {cloneElement(menu as React.ReactElement, {
@@ -93,14 +94,17 @@ export function Dropdown() {
             return menu;
           }
         }}>
-        {isLogin && userInfo?.avatar ? (
-          <Avatar
-            size="large"
-            src={userInfo.avatar}
-          />
-        ) : (
-          <Avatar size="large">我</Avatar>
-        )}
+        <div>
+          {/* TODO 这里必须用div包一下，不然会无法将下拉菜单渲染出来，而且这里有一个未知的报错 */}
+          {isLogin && userInfo?.avatar ? (
+            <Avatar
+              antdProps={{ size: "large" }}
+              src={userInfo.avatar}
+            />
+          ) : (
+            <Avatar antdProps={{ size: "large" }} />
+          )}
+        </div>
       </AntdDropDown>
     </>
   );
