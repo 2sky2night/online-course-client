@@ -27,3 +27,6 @@ export const IS_ABSOLUTE_PATH = /^(?:\/|[a-zA-Z]:\\)/;
  */
 export const STATIC_SERVER_URL = import.meta.env
   .VITE_STATIC_SERVER_URL as string;
+
+/** 移动端宽度 */
+export const IS_MOBILE = 720;
