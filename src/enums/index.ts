@@ -20,4 +20,6 @@ export enum Page {
 export enum ZustandKey {
   /** 用户 */
   User = "user-store",
+  /** 设置 */
+  SETTING = "setting-store",
 }
