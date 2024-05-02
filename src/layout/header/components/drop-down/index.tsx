@@ -43,7 +43,7 @@ export function Dropdown() {
     // TODO 页面是刷新？还是回到首页？还是暂留在当前页面？
     logout();
     setShowModal(false);
-    navigate(Page.Index); // 回到首页
+    navigate(Page.INDEX); // 回到首页
   };
   /** 点击某一项菜单的回调 */
   const handleSelect: MenuProps["onClick"] = ({ key }) => {

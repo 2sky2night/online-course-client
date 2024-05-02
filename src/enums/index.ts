@@ -7,19 +7,19 @@ export enum MittEvent {
 /** 页面路径 */
 export enum Page {
   /** 首页 */
-  Index = "/",
+  INDEX = "/",
   /** 支付宝第三方登陆 */
-  OAuthAlipay = "/oauth/alipay",
+  OAUTH_ALIPAY = "/oauth/alipay",
   /** gitee第三方登陆 */
-  OAuthGitee = "/oauth/gitee",
+  OAUTH_GITEE = "/oauth/gitee",
   /** github第三方登陆 */
-  OAuthGithub = "/oauth/github",
+  OAUTH_GITHUB = "/oauth/github",
 }
 
 /** zustand持久化存储key */
 export enum ZustandKey {
   /** 用户 */
-  User = "user-store",
+  USER = "user-store",
   /** 设置 */
   SETTING = "setting-store",
 }

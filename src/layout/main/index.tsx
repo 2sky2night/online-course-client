@@ -35,10 +35,10 @@ export default function Main() {
     if (isLogin && (route.meta as NoAuthMeta).noLogin) {
       // 登录了，访问了未登录了才能访问的页面
       // 返回首页
-      navigate(Page.Index, { replace: true });
+      navigate(Page.INDEX, { replace: true });
     } else if (!isLogin && (route.meta as AuthMeta).needAuth) {
       // 返回首页
-      navigate(Page.Index, { replace: true });
+      navigate(Page.INDEX, { replace: true });
       // 打开弹窗
       handleOpenLoginModal();
     }

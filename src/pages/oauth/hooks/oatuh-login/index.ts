@@ -24,7 +24,7 @@ export const useOAuthLogin = (
   const login = useUserStore(s => s.login);
   /** 恢复上一次浏览的页面 */
   const handleRecallPage = () => {
-    const path = PagesRecall.getKey() || Page.Index;
+    const path = PagesRecall.getKey() || Page.INDEX;
     navigate(path, { replace: true });
     // 清除记录
     PagesRecall.removeKey();

@@ -13,7 +13,7 @@ export default function NotFoundPage() {
       extra={
         <Button
           type="primary"
-          onClick={() => navigate(Page.Index, { replace: true })}>
+          onClick={() => navigate(Page.INDEX, { replace: true })}>
           Back Home
         </Button>
       }

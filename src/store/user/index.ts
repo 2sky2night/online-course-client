@@ -40,7 +40,7 @@ export const useUserStore = create(
       };
     },
     {
-      name: ZustandKey.User,
+      name: ZustandKey.USER,
       storage: createJSONStorage(() => globalThis.localStorage),
       partialize: state => ({ userInfo: state.userInfo }),
     },
