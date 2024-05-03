@@ -2,6 +2,8 @@
 export enum MittEvent {
   /** 打开登录模态框 */
   OPEN_LOGIN_MODAL = "OPEN_LOGIN_MODAL",
+  /** main组件滚动条触底了(在此订阅的回调中千万不要使用state，因为作用域问题只能获取旧的state) */
+  MAIN_IS_BOTTOM_DOWN = "MAIN_IS_BOTTOM_DOWN",
 }
 
 /** 页面路径 */

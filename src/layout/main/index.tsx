@@ -22,6 +22,13 @@ export default function Main() {
   const handleOpenLoginModal = () => {
     setShow(true);
   };
+  /** mian组件滚动的回调 */
+  const handleScroll: React.UIEventHandler<HTMLDivElement> = e => {
+    const { clientHeight, scrollTop, scrollHeight } =
+      e.target as HTMLDivElement;
+    if (clientHeight + scrollTop >= scrollHeight)
+      emitter.emit(MittEvent.MAIN_IS_BOTTOM_DOWN);
+  };
   // 路由后置守卫
   useAuthRoute(route => {
     // 1.修改网页标题
@@ -56,7 +63,9 @@ export default function Main() {
 
   return (
     <>
-      <div className={styles.mainContainer}>
+      <div
+        className={styles.mainContainer}
+        onScroll={handleScroll}>
         <div className="max-w-7xl m-auto py-3 px-2">
           <Outlet />
         </div>
