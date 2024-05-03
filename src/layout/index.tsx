@@ -1,6 +1,8 @@
+import { theme } from "antd";
 import { ThemeProvider } from "antd-style";
 import { createContext, useEffect, useState } from "react";
 
+import { IS_MOBILE } from "@/constants";
 import { useSettingStore } from "@/store";
 
 import Header from "./header";
@@ -35,7 +37,11 @@ export default function Layout() {
 
   return (
     <AppContext.Provider value={{ innerWidth: width }}>
-      <ThemeProvider themeMode={isDark ? "dark" : "light"}>
+      <ThemeProvider
+        themeMode={isDark ? "dark" : "light"}
+        theme={{
+          token: { ...theme.defaultConfig.token, screenMDMax: IS_MOBILE },
+        }}>
         <div className={styles.layout}>
           <Header></Header>
           <Main></Main>
