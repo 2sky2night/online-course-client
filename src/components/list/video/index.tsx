@@ -1,3 +1,5 @@
+import { Divider, Empty } from "antd";
+import { useAntdToken } from "antd-style";
 import { useEffect, useRef, useState } from "react";
 
 import { Skeleton, VideoItem } from "@/components";
@@ -16,10 +18,13 @@ interface Props {
 
 /** 按需以列表的形式加载视频 */
 export function VideoList({ request, pageSize = 20 }: Props) {
+  const { colorTextDescription, fontSizeSM } = useAntdToken();
   /** 列表项 */
   const [list, setList] = useState<Video[]>([]);
   /** 加载态(页面展示加载态) */
   const [loading, setLoading] = useState(false);
+  /** 还有更多吗(页面展示) */
+  const [hasMore, setHasMore] = useState(false);
   /** 页码 */
   const [page, setPage] = useState(1);
   /** 还有更多吗？ */
@@ -37,6 +42,7 @@ export function VideoList({ request, pageSize = 20 }: Props) {
       );
       setList(state => [...state, ...list]);
       hasMoreRef.current = hasMore;
+      setHasMore(hasMore);
     } finally {
       setLoading(false);
       loadingRef.current = false;
@@ -64,14 +70,23 @@ export function VideoList({ request, pageSize = 20 }: Props) {
 
   return (
     <div>
-      <div className="grid grid-cols-2 gap-3 px-2 py-3 md:grid-cols-3 lg:grid-cols-4">
-        {list.map(item => (
-          <VideoItem
-            key={item.video_id}
-            video={item}
-          />
-        ))}
-      </div>
+      {list.length ? (
+        <div className="grid grid-cols-2 gap-3 px-2 py-3 md:grid-cols-3 lg:grid-cols-4">
+          {list.map(item => (
+            <VideoItem
+              key={item.video_id}
+              video={item}
+            />
+          ))}
+        </div>
+      ) : (
+        <Empty description="暂无数据" />
+      )}
+      {!loading && !hasMore && (
+        <Divider style={{ color: colorTextDescription, fontSize: fontSizeSM }}>
+          <span>没有更多了</span>
+        </Divider>
+      )}
       {loading && <Skeleton.VideoList />}
     </div>
   );

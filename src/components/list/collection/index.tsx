@@ -1,4 +1,5 @@
-import { Empty } from "antd";
+import { Divider, Empty } from "antd";
+import { useAntdToken } from "antd-style";
 import { useEffect, useRef, useState } from "react";
 
 import { CollectionItem, Skeleton } from "@/components";
@@ -16,9 +17,11 @@ interface Props {
   pageSize?: number;
 }
 
-export function CollectionList({ request, pageSize = 20 }: Props) {
+export function CollectionList({ request, pageSize = 5 }: Props) {
   const [list, setList] = useState<Collection[]>([]);
   const [loading, setLoading] = useState(false);
+  const [hasMore, setHasMore] = useState(false);
+  const { colorTextDescription, fontSizeSM } = useAntdToken();
   const [page, setPage] = useState(1);
   const pageRef = useRef({
     hasMore: false,
@@ -34,6 +37,7 @@ export function CollectionList({ request, pageSize = 20 }: Props) {
         pageSize,
       );
       pageRef.current.hasMore = hasMore;
+      setHasMore(hasMore);
       setList(state => [...state, ...list]);
     } finally {
       setLoading(false);
@@ -60,9 +64,7 @@ export function CollectionList({ request, pageSize = 20 }: Props) {
 
   return (
     <div className="px-2 py-2">
-      {loading ? (
-        <Skeleton.Collection limit={5} />
-      ) : list.length ? (
+      {list.length ? (
         list.map((item, index) => (
           <CollectionItem
             key={item.collection_id}
@@ -73,6 +75,12 @@ export function CollectionList({ request, pageSize = 20 }: Props) {
       ) : (
         <Empty description="暂无数据" />
       )}
+      {!hasMore && !loading && (
+        <Divider style={{ color: colorTextDescription, fontSize: fontSizeSM }}>
+          <span>没有更多了</span>
+        </Divider>
+      )}
+      {loading && <Skeleton.Collection limit={5} />}
     </div>
   );
 }
