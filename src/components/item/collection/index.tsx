@@ -1,7 +1,9 @@
 import { Avatar, Empty } from "antd";
 import { useEffect, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import { Image, Skeleton, VideoItem } from "@/components";
+import { Page } from "@/enums";
 import { useCheckInWindow } from "@/hooks";
 import { videoCollectionControllerVideoList as videoList } from "@/servers/go_study_server/videoCollection";
 import type { Collection, Video } from "@/types";
@@ -50,6 +52,7 @@ function VideoListSkeleton() {
 export function CollectionItem({ collection, index }: Props) {
   const { styles } = useCollecitonItemStyles();
   const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
   /** 视频列表 */
   const [list, setList] = useState<Video[]>([]);
   const { binder } = useCheckInWindow(() => {
@@ -66,6 +69,10 @@ export function CollectionItem({ collection, index }: Props) {
   });
   /** 视频列表DOM */
   const listRef = useRef<HTMLDivElement | null>(null);
+  /** 点击进入章节详情 */
+  const handleCollection = () => {
+    navigate(Page.COLLECTION_INFO + "/" + collection.collection_id);
+  };
   /** 绑定视口与容器相交监听 */
   useEffect(() => {
     listRef.current && binder(listRef.current);
@@ -90,7 +97,11 @@ export function CollectionItem({ collection, index }: Props) {
           <span className="ml-3">{`第 ${index} 章 ${collection.collection_name}`}</span>
         </div>
         <div>
-          <span className={styles.seeAll}>此章节的全部知识点</span>
+          <span
+            className={styles.seeAll}
+            onClick={handleCollection}>
+            此章节的全部知识点
+          </span>
         </div>
       </div>
       <div

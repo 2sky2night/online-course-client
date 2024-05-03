@@ -1,4 +1,5 @@
 import Layout from "@/layout";
+import CollectionInfo from "@/pages/collection-info";
 import NotFoundPage from "@/pages/error/404";
 import Index from "@/pages/index";
 import AlipayPage from "@/pages/oauth/pages/alipay";
@@ -59,6 +60,13 @@ export const routes: RouteItem[] = [
     element: <PartitionInfo />,
     meta: {
       title: "课程详情",
+    },
+  },
+  {
+    path: "/collection/:cid",
+    element: <CollectionInfo />,
+    meta: {
+      title: "章节详情",
     },
   },
   {

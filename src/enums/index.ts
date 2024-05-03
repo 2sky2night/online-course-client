@@ -18,6 +18,8 @@ export enum Page {
   OAUTH_GITHUB = "/oauth/github",
   /** 分区（课程）详情，需要传递路径参数 */
   PARTITION_INFO = "/partition",
+  /** 合集（章节）详情，需要传递路径参数 */
+  COLLECTION_INFO = "/collection",
 }
 
 /** zustand持久化存储key */
