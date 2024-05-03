@@ -3,18 +3,21 @@ import { RightOutlined as RightIcon } from "@ant-design/icons";
 import { Spin } from "antd";
 import { useAntdToken } from "antd-style";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import { Button } from "@/components";
+import { Page } from "@/enums";
 import { videoPartitionControllerList as partitonList } from "@/servers/go_study_server/videoPartition";
 import type { Partition } from "@/types";
 
 export function CoursePanel() {
+  const navigate = useNavigate();
   const [list, setList] = useState<Partition[]>([]);
   const [loading, setLoading] = useState(true);
   const { colorTextDescription } = useAntdToken();
   /** 点击某个分区的回调 */
-  const handleGoInfo = () => {
-    console.log("点击了某个分区");
+  const handleGoInfo = (pid: number) => {
+    navigate(Page.PARTITION_INFO + "/" + pid);
   };
   /** 点击了查看更多 */
   const handleGoList = () => {
@@ -40,7 +43,7 @@ export function CoursePanel() {
           {list.map(item => (
             <Button
               key={item.partition_id}
-              onClick={handleGoInfo}>
+              onClick={() => handleGoInfo(item.partition_id)}>
               {item.partition_name}
             </Button>
           ))}

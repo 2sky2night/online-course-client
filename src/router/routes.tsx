@@ -4,6 +4,7 @@ import Index from "@/pages/index";
 import AlipayPage from "@/pages/oauth/pages/alipay";
 import GiteePage from "@/pages/oauth/pages/gitee";
 import GithubPage from "@/pages/oauth/pages/github";
+import { PartitionInfo } from "@/pages/partition-info";
 import UserPage from "@/pages/user";
 
 import type { RouteItem } from "./types";
@@ -52,6 +53,13 @@ export const routes: RouteItem[] = [
         },
       },
     ],
+  },
+  {
+    path: "/partition/:pid",
+    element: <PartitionInfo />,
+    meta: {
+      title: "课程详情",
+    },
   },
   {
     path: "*",
