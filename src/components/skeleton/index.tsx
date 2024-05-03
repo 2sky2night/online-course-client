@@ -47,10 +47,10 @@ const Skeleton = ({
   );
 };
 
-function VideoList() {
+function VideoList({ limit = 20 }: { limit?: number }) {
   return (
     <div className="grid grid-cols-2 md:grid-cols-4 gap-3 p-2">
-      {Array.from({ length: 20 }).map(() => (
+      {Array.from({ length: limit }).map(() => (
         <div>
           <Skeleton
             height="10vw"
@@ -73,6 +73,50 @@ function VideoList() {
   );
 }
 
+function Collection({ limit = 20 }: { limit?: number }) {
+  return (
+    <div>
+      {Array.from({ length: limit }).map(() => {
+        return (
+          <div className="py-3 px-2">
+            <div className="flex items-center">
+              <Skeleton
+                width="30px"
+                height="30px"
+                borderRadius="3px"
+              />
+              <Skeleton
+                className="ml-2"
+                width="30%"
+                height="20px"
+              />
+            </div>
+            <div className="h-32 mt-3">
+              <Skeleton
+                className="mt-2"
+                width="80%"
+                height="20px"
+              />
+              <Skeleton
+                className="mt-2"
+                width="60%"
+                height="20px"
+              />
+              <Skeleton
+                className="mt-2"
+                width="30%"
+                height="20px"
+              />
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
 export default {
   VideoList,
+  Collection,
+  Skeleton,
 };
