@@ -6,6 +6,11 @@ export const useLogoStyles = createStyles(({ token }) => {
       userSelect: "none",
       color: token.colorText,
       fontSize: token.fontSizeLG,
+      transition: ".3s",
+      cursor: "pointer",
+      ":hover": {
+        color: token.colorPrimary,
+      },
     },
   };
 });
