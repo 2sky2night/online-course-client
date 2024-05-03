@@ -86,3 +86,16 @@ export function formatNum(value: number, pre = 2) {
     return String(value);
   }
 }
+
+/**
+ * 解析数值字符串
+ * @param value
+ */
+export function validateNumStr(value: string) {
+  const _value = +value;
+  if (globalThis.Number.isNaN(_value)) {
+    return null;
+  } else {
+    return _value;
+  }
+}
