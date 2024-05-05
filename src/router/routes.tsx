@@ -6,6 +6,7 @@ import AlipayPage from "@/pages/oauth/pages/alipay";
 import GiteePage from "@/pages/oauth/pages/gitee";
 import GithubPage from "@/pages/oauth/pages/github";
 import { PartitionInfo } from "@/pages/partition-info";
+import Partitions from "@/pages/partitions";
 import UserPage from "@/pages/user";
 
 import type { RouteItem } from "./types";
@@ -67,6 +68,13 @@ export const routes: RouteItem[] = [
     element: <CollectionInfo />,
     meta: {
       title: "章节详情",
+    },
+  },
+  {
+    path: "/partitions",
+    element: <Partitions />,
+    meta: {
+      title: "全部课程",
     },
   },
   {

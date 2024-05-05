@@ -20,6 +20,8 @@ export enum Page {
   PARTITION_INFO = "/partition",
   /** 合集（章节）详情，需要传递路径参数 */
   COLLECTION_INFO = "/collection",
+  /** 分区（课程）列表 */
+  PARTITIONS = "/partitions",
 }
 
 /** zustand持久化存储key */
