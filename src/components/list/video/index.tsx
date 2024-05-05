@@ -33,7 +33,7 @@ export function VideoList({ request, pageSize = 20 }: Props) {
       ) : (
         <Empty description="暂无数据" />
       )}
-      {!loading && !hasMore && (
+      {!loading && !hasMore && Boolean(list.length) && (
         <Divider style={{ color: colorTextDescription, fontSize: fontSizeSM }}>
           <span>没有更多了</span>
         </Divider>

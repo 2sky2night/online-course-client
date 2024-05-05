@@ -32,7 +32,7 @@ export function CollectionList({ request, pageSize = 5 }: Props) {
       ) : (
         <Empty description="暂无数据" />
       )}
-      {!hasMore && !loading && (
+      {!hasMore && !loading && Boolean(list.length) && (
         <Divider style={{ color: colorTextDescription, fontSize: fontSizeSM }}>
           <span>没有更多了</span>
         </Divider>
