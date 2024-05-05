@@ -1,5 +1,14 @@
 import { IS_ABSOLUTE_PATH, STATIC_SERVER_URL } from "@/constants";
 
+interface Props
+  extends React.DetailedHTMLProps<
+    React.ImgHTMLAttributes<HTMLImageElement>,
+    HTMLImageElement
+  > {
+  /** 是否需要拼接路径 */
+  needJoin?: boolean;
+}
+
 /**
  * 图片组件
  * 1.拼接路径
@@ -8,15 +17,9 @@ import { IS_ABSOLUTE_PATH, STATIC_SERVER_URL } from "@/constants";
  * @param param0
  * @returns
  */
-export function Image({
-  src,
-  ...props
-}: React.DetailedHTMLProps<
-  React.ImgHTMLAttributes<HTMLImageElement>,
-  HTMLImageElement
->) {
+export function Image({ src, needJoin = true, ...props }: Props) {
   let _src = src || "";
-  if (IS_ABSOLUTE_PATH.test(_src)) {
+  if (needJoin && IS_ABSOLUTE_PATH.test(_src)) {
     _src = STATIC_SERVER_URL + _src;
   }
   return (
