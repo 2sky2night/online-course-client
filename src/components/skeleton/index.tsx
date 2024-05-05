@@ -115,8 +115,33 @@ function Collection({ limit = 20 }: { limit?: number }) {
   );
 }
 
+function Partition({ limit = 20 }: { limit?: number }) {
+  return (
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 px-2 py-2">
+      {Array.from({ length: limit }).map(() => {
+        return (
+          <div className="flex md:flex-col">
+            <Skeleton className="h-28 w-28 md:h-44 md:w-full mb-3" />
+            <div className="flex-1 ml-2 md:ml-0">
+              <Skeleton
+                className="mb-1 h-6"
+                width="100%"
+              />
+              <Skeleton
+                className="h-6"
+                width="80%"
+              />
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
 export default {
   VideoList,
   Collection,
   Skeleton,
+  Partition,
 };
