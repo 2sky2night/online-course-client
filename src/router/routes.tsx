@@ -8,6 +8,7 @@ import GithubPage from "@/pages/oauth/pages/github";
 import { PartitionInfo } from "@/pages/partition-info";
 import Partitions from "@/pages/partitions";
 import UserPage from "@/pages/user";
+import VideoInfo from "@/pages/video-info";
 
 import type { RouteItem } from "./types";
 
@@ -75,6 +76,13 @@ export const routes: RouteItem[] = [
     element: <Partitions />,
     meta: {
       title: "全部课程",
+    },
+  },
+  {
+    path: "/video/:vid",
+    element: <VideoInfo />,
+    meta: {
+      title: "视频详情",
     },
   },
   {

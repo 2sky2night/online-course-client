@@ -22,6 +22,8 @@ export enum Page {
   COLLECTION_INFO = "/collection",
   /** 分区（课程）列表 */
   PARTITIONS = "/partitions",
+  /** 视频详情，需要传递路径参数 */
+  VIDEO_INFO = "/video",
 }
 
 /** zustand持久化存储key */

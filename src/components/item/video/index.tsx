@@ -1,6 +1,8 @@
 import { useMemo } from "react";
+import { Link } from "react-router-dom";
 
 import { Ellipsis, Image } from "@/components";
+import { Page } from "@/enums";
 import type { Video } from "@/types";
 import { formatDate, formatDuration } from "@/utils/tools";
 
@@ -10,8 +12,8 @@ interface Props {
   video: Video;
 }
 
-// TODO 点击某一项跳转视频详情页
 // TODO 播放量显示（需要后端支持）
+// TODO 评论显示量（需要后端支持）
 /** 视频项组件 */
 export function VideoItem({ video }: Props) {
   const { styles } = useVideoStyles();
@@ -23,28 +25,28 @@ export function VideoItem({ video }: Props) {
   const duration = useMemo(() => {
     return formatDuration(video.duration);
   }, [video.duration]);
-  /** 点击视频的回调 */
-  const handleGoVideo = () => {};
 
   return (
     <div className={styles.videoItem}>
-      <div
-        className={styles.videoCover}
-        onClick={handleGoVideo}>
-        <Image
-          className={styles.videoCoverImg}
-          src={video.video_cover}
-        />
-        <div className={styles.videoCoverMask}>
-          <div className={styles.videoCoverBottom}>
-            <span>{duration}</span>
+      <div className={styles.videoCover}>
+        <Link to={`${Page.VIDEO_INFO}/${video.video_id}`}>
+          <Image
+            className={styles.videoCoverImg}
+            src={video.video_cover}
+          />
+          <div className={styles.videoCoverMask}>
+            <div className={styles.videoCoverBottom}>
+              <span>{duration}</span>
+            </div>
           </div>
-        </div>
+        </Link>
       </div>
-      <Ellipsis
-        lineClamp={2}
-        style={{ margin: "5px 0", height: "42px", fontSize: "15px" }}>
-        {video.video_name}
+      <Ellipsis lineClamp={2}>
+        <Link
+          to={`${Page.VIDEO_INFO}/${video.video_id}`}
+          className={styles.videoTitle}>
+          {video.video_name}
+        </Link>
       </Ellipsis>
       <div className={styles.videoDesc}>
         <span className="mr-1">{video.publisher.account_name}</span>

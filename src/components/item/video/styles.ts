@@ -47,5 +47,15 @@ export const useVideoStyles = createStyles(({ responsive, token }) => {
     videoDesc: {
       color: token.colorTextSecondary,
     },
+    videoTitle: {
+      display: "block",
+      margin: "5px 0",
+      height: "42px",
+      fontSize: "15px",
+      transition: token.motionDurationFast,
+      ":hover": {
+        color: token.colorPrimary,
+      },
+    },
   };
 });
