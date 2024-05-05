@@ -21,7 +21,7 @@ export function CoursePanel() {
   };
   /** 点击了查看更多 */
   const handleGoList = () => {
-    console.log("查看更多");
+    navigate(Page.PARTITIONS);
   };
   // TODO 是否折叠？
   useEffect(() => {
