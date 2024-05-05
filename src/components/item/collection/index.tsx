@@ -1,6 +1,6 @@
 import { Avatar, Empty } from "antd";
 import { useEffect, useMemo, useRef, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import { Image, Skeleton, VideoItem } from "@/components";
 import { Page } from "@/enums";
@@ -53,7 +53,6 @@ function VideoListSkeleton() {
 export function CollectionItem({ collection, index }: Props) {
   const { styles } = useCollecitonItemStyles();
   const [loading, setLoading] = useState(true);
-  const navigate = useNavigate();
   /** 视频列表 */
   const [list, setList] = useState<Video[]>([]);
   const { binder } = useCheckInWindow(() => {
@@ -70,10 +69,6 @@ export function CollectionItem({ collection, index }: Props) {
   });
   /** 视频列表DOM */
   const listRef = useRef<HTMLDivElement | null>(null);
-  /** 点击进入章节详情 */
-  const handleCollection = () => {
-    navigate(Page.COLLECTION_INFO + "/" + collection.collection_id);
-  };
   /** 创建时间 */
   const createdTime = useMemo(() => {
     if (collection.created_time) {
@@ -106,11 +101,11 @@ export function CollectionItem({ collection, index }: Props) {
           <span className="ml-3">{`第 ${index} 章 ${collection.collection_name}`}</span>
         </div>
         <div>
-          <span
-            className={styles.seeAll}
-            onClick={handleCollection}>
+          <Link
+            to={`${Page.COLLECTION_INFO}/${collection.collection_id}`}
+            className={styles.seeAll}>
             此章节的全部知识点
-          </span>
+          </Link>
         </div>
       </div>
       <div
