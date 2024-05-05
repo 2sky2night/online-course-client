@@ -25,7 +25,7 @@ export const useVideoStyles = createStyles(({ responsive, token }) => {
       left: "0px",
       right: "0px",
       display: "flex",
-      justifyContent: "flex-end",
+      justifyContent: "space-between",
     },
     videoCover: {
       position: "relative",
@@ -56,6 +56,9 @@ export const useVideoStyles = createStyles(({ responsive, token }) => {
       ":hover": {
         color: token.colorPrimary,
       },
+    },
+    icon: {
+      fontSize: "15px",
     },
   };
 });

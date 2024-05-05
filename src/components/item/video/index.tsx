@@ -1,3 +1,7 @@
+import {
+  CommentOutlined as CommentIcon,
+  PlayCircleOutlined as PlayIcon,
+} from "@ant-design/icons";
 import { useMemo } from "react";
 import { Link } from "react-router-dom";
 
@@ -36,6 +40,16 @@ export function VideoItem({ video }: Props) {
           />
           <div className={styles.videoCoverMask}>
             <div className={styles.videoCoverBottom}>
+              <div className="flex">
+                <div className="flex items-center">
+                  <PlayIcon className={`mr-1 ${styles.icon}`} />
+                  <span>{video.view_count || 0}</span>
+                </div>
+                <div className="ml-3 flex items-center">
+                  <CommentIcon className={`mr-1 ${styles.icon}`} />
+                  <span>{video.comment_count || 0}</span>
+                </div>
+              </div>
               <span>{duration}</span>
             </div>
           </div>
