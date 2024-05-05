@@ -14,13 +14,13 @@ export const useCollecitonItemStyles = createStyles(({ token, responsive }) => {
         color: token.colorPrimary,
       },
     },
-    videoCount: {
+    textSub: {
       color: token.colorTextDescription,
     },
     videoList: {
       marginTop: "20px",
       marginLeft: "40px",
-      minHeight: "250px",
+      minHeight: "200px",
       overflowX: "auto",
     },
     videoItem: {

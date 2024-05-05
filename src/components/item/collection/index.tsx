@@ -1,5 +1,5 @@
 import { Avatar, Empty } from "antd";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { Image, Skeleton, VideoItem } from "@/components";
@@ -7,6 +7,7 @@ import { Page } from "@/enums";
 import { useCheckInWindow } from "@/hooks";
 import { videoCollectionControllerVideoList as videoList } from "@/servers/go_study_server/videoCollection";
 import type { Collection, Video } from "@/types";
+import { formatDate } from "@/utils/tools";
 
 import { useCollecitonItemStyles } from "./styles";
 
@@ -73,6 +74,14 @@ export function CollectionItem({ collection, index }: Props) {
   const handleCollection = () => {
     navigate(Page.COLLECTION_INFO + "/" + collection.collection_id);
   };
+  /** 创建时间 */
+  const createdTime = useMemo(() => {
+    if (collection.created_time) {
+      return formatDate(collection.created_time);
+    } else {
+      return "";
+    }
+  }, [collection.created_time]);
   /** 绑定视口与容器相交监听 */
   useEffect(() => {
     listRef.current && binder(listRef.current);
@@ -123,10 +132,9 @@ export function CollectionItem({ collection, index }: Props) {
           <Empty description="暂无数据" />
         )}
       </div>
-      <div className="flex justify-end mt-2">
-        <span className={styles.videoCount}>
-          共 {collection.video_count} 项
-        </span>
+      <div className="flex justify-between mt-5 mb-3 ml-11">
+        <span className={styles.textSub}>{createdTime}</span>
+        <span className={styles.textSub}>共 {collection.video_count} 项</span>
       </div>
     </div>
   );
