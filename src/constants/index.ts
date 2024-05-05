@@ -30,3 +30,6 @@ export const STATIC_SERVER_URL = import.meta.env
 
 /** 移动端(手机平板等)宽度 */
 export const IS_MOBILE = 786;
+
+/** 兜底的图片链接 */
+export const DEFAULT_IMG = "/images/default.png";
