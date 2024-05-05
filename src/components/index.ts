@@ -7,5 +7,6 @@ export * from "./item";
 export * from "./list";
 export { LoginForm } from "./login-form";
 export { LoginModal } from "./login-modal";
+export { NoMore } from "./no-more";
 import skeleton from "./skeleton";
 export const Skeleton = skeleton;

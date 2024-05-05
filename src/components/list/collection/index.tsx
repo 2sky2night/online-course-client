@@ -1,7 +1,6 @@
-import { Divider, Empty } from "antd";
-import { useAntdToken } from "antd-style";
+import { Empty } from "antd";
 
-import { CollectionItem, Skeleton } from "@/components";
+import { CollectionItem, NoMore, Skeleton } from "@/components";
 import { useList } from "@/hooks";
 import type { Collection } from "@/types";
 
@@ -16,7 +15,6 @@ interface Props {
 }
 
 export function CollectionList({ request, pageSize = 5 }: Props) {
-  const { colorTextDescription, fontSizeSM } = useAntdToken();
   const { list, loading, hasMore } = useList({ request, pageSize });
 
   return (
@@ -32,11 +30,7 @@ export function CollectionList({ request, pageSize = 5 }: Props) {
       ) : (
         <Empty description="暂无数据" />
       )}
-      {!hasMore && !loading && Boolean(list.length) && (
-        <Divider style={{ color: colorTextDescription, fontSize: fontSizeSM }}>
-          <span>没有更多了</span>
-        </Divider>
-      )}
+      {!loading && !hasMore && Boolean(list.length) && <NoMore />}
       {loading && <Skeleton.Collection limit={5} />}
     </div>
   );

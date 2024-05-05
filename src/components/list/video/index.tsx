@@ -1,7 +1,6 @@
-import { Divider, Empty } from "antd";
-import { useAntdToken } from "antd-style";
+import { Empty } from "antd";
 
-import { Skeleton, VideoItem } from "@/components";
+import { NoMore, Skeleton, VideoItem } from "@/components";
 import { useList } from "@/hooks";
 import type { Video } from "@/types";
 
@@ -16,7 +15,6 @@ interface Props {
 
 /** 按需以列表的形式加载视频 */
 export function VideoList({ request, pageSize = 20 }: Props) {
-  const { colorTextDescription, fontSizeSM } = useAntdToken();
   const { list, loading, hasMore } = useList<Video>({ request, pageSize });
 
   return (
@@ -33,11 +31,7 @@ export function VideoList({ request, pageSize = 20 }: Props) {
       ) : (
         <Empty description="暂无数据" />
       )}
-      {!loading && !hasMore && Boolean(list.length) && (
-        <Divider style={{ color: colorTextDescription, fontSize: fontSizeSM }}>
-          <span>没有更多了</span>
-        </Divider>
-      )}
+      {!loading && !hasMore && Boolean(list.length) && <NoMore />}
       {loading && <Skeleton.VideoList />}
     </div>
   );
