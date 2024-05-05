@@ -9,6 +9,11 @@ li {
   margin: 0;
 }
 
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
 *,
 ::before,
 ::after {
