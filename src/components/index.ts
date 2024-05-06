@@ -8,5 +8,6 @@ export * from "./list";
 export { LoginForm } from "./login-form";
 export { LoginModal } from "./login-modal";
 export { NoMore } from "./no-more";
+export { VideoPlayer } from "./video";
 import skeleton from "./skeleton";
 export const Skeleton = skeleton;

@@ -33,3 +33,8 @@ export const IS_MOBILE = 786;
 
 /** 兜底的图片链接 */
 export const DEFAULT_IMG = "/images/default.png";
+
+/**
+ * 视频播放的基地址
+ */
+export const VIDEO_BASE_URL = STATIC_SERVER_URL + "/video";

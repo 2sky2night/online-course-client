@@ -99,3 +99,13 @@ export function validateNumStr(value: string) {
     return _value;
   }
 }
+
+/**
+ * 格式化时间文本 如 00:10 hh：ss
+ * @param value 单位 秒
+ */
+export function formatTime(value: number) {
+  const sed = Math.floor(value % 60);
+  const min = Math.floor(value / 60);
+  return `${formatNum(min)}:${formatNum(sed)}`;
+}

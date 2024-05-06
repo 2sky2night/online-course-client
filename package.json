@@ -19,6 +19,11 @@
   "dependencies": {
     "@ant-design/icons": "^5.3.6",
     "@ant-design/pro-components": "^2.7.1",
+    "@react-spring/web": "^9.7.3",
+    "@ricons/fa": "^0.12.0",
+    "@ricons/fluent": "^0.12.0",
+    "@ricons/ionicons5": "^0.12.0",
+    "@ricons/utils": "^0.1.6",
     "antd": "^5.15.0",
     "antd-style": "^3.6.2",
     "axios": "^1.6.8",
@@ -31,6 +36,7 @@
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.23.0",
     "styled-components": "^6.1.8",
+    "video.js": "^8.12.0",
     "zustand": "^4.5.2"
   },
   "devDependencies": {
@@ -42,6 +48,7 @@
     "@types/node": "^20.11.24",
     "@types/react": "^18.2.56",
     "@types/react-dom": "^18.2.19",
+    "@types/video.js": "^7.3.58",
     "@typescript-eslint/eslint-plugin": "^7.0.2",
     "@typescript-eslint/parser": "^7.0.2",
     "@umijs/openapi": "^1.12.1",
