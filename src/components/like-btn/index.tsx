@@ -94,13 +94,13 @@ function BaseBtn({
 
   return (
     <span
-      className="text-2xl inline-flex items-center"
+      className="text-base md:text-2xl inline-flex items-center"
       onClick={handleRequest}
       style={{ color: value ? colorPrimary : colorText }}>
-      <div className="cursor-pointer">
+      <div className="cursor-pointer relative top-0.5">
         <Icon>{value ? <LikedIcon /> : <LikeIcon />}</Icon>
       </div>
-      <span className="ml-2 text-lg">{likeCount}</span>
+      <span className="ml-2 md:text-lg text-base">{likeCount}</span>
     </span>
   );
 }
