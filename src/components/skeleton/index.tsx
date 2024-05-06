@@ -139,9 +139,42 @@ function Partition({ limit = 20 }: { limit?: number }) {
   );
 }
 
+function Comment({ limit = 20 }: { limit?: number }) {
+  return (
+    <div>
+      {Array.from({ length: limit }).map(() => (
+        <div className="flex py-3 px-2">
+          <Skeleton
+            width="40px"
+            height="40px"
+            borderRadius="50%"
+          />
+          <div className="flex-1 py-3 ml-2">
+            <Skeleton
+              width="20%"
+              height="20px"
+            />
+            <Skeleton
+              className="mt-5"
+              width="100%"
+              height="20px"
+            />
+            <Skeleton
+              className="mt-2"
+              width="50%"
+              height="20px"
+            />
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
+
 export default {
   VideoList,
   Collection,
   Skeleton,
   Partition,
+  Comment,
 };

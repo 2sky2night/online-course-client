@@ -12,3 +12,6 @@ export type Collection = API.CollectionDtoA;
 
 /** 视频详情信息 */
 export type VideoInfo = API.RVideoInfoDto;
+
+/** 评论列表项 */
+export type Comment = API.CommentDtoA;
