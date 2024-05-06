@@ -9,3 +9,6 @@ export type Video = API.RVideoListItemDto;
 
 /** 视频合集基本信息 */
 export type Collection = API.CollectionDtoA;
+
+/** 视频详情信息 */
+export type VideoInfo = API.RVideoInfoDto;
