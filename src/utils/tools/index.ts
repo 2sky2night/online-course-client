@@ -21,13 +21,13 @@ export function formatDate(datatime: string) {
         // 7天内的
         if (time.date() === nowTime.date()) {
           // 今天的
-          const min = nowTime.diff(time) / 1000;
+          const min = Math.floor(nowTime.diff(time) / 1000);
           if (min >= 3600) {
             return `${Math.floor(min / 3600)} 小时前`;
           } else if (min >= 60) {
             return `${Math.floor(min / 60)} 分钟前`;
           } else {
-            return `${min} 小时前`;
+            return `${min} 秒前`;
           }
         } else {
           // 非今天的返回x天前
