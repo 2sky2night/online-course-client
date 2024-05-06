@@ -10,7 +10,7 @@ import {
 import type { VideoInfo } from "@/types";
 import { validateNumStr } from "@/utils/tools";
 
-import { Info, Video } from "./components";
+import { Info, Video, VideoComments } from "./components";
 
 export default function VideoInfo() {
   const { vid: vidStr } = useParams<{ vid: string }>();
@@ -43,6 +43,15 @@ function VideoInfoPage({ vid }: { vid: number }) {
             <Info video={info} />
           </div>
           <Video video={info} />
+          <VideoComments
+            video={info}
+            onPostComment={() => {
+              setInfo({
+                ...info,
+                count: { ...info.count, comments: info.count.comments + 1 },
+              });
+            }}
+          />
         </>
       )}
     </>
