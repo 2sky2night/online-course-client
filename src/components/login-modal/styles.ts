@@ -1,6 +1,6 @@
 import { createStyles } from "antd-style";
 
-export const useLoginModalStyles = createStyles(({ token }) => {
+export const useLoginModalStyles = createStyles(({ token, responsive }) => {
   token;
   return {
     container: {
@@ -13,6 +13,11 @@ export const useLoginModalStyles = createStyles(({ token }) => {
       fontSize: "20px",
       cursor: "pointer",
       color: token.colorWhite,
+      [responsive.md]: {
+        right: "10px",
+        top: "0px",
+        color: token.colorText,
+      },
     },
   };
 });

@@ -32,7 +32,8 @@ export const LoginModal = ({ show, onClose }: Props) => {
       onCancel={handleCloseModal}
       footer={false}
       closeIcon={false}
-      maskClosable={false}>
+      maskClosable={false}
+      centered>
       <div className={styles.container}>
         <div
           className={styles.closeIconBox}
