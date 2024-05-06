@@ -52,6 +52,21 @@ export function useList<T>({ request, pageSize = 20 }: Hooks<T>) {
     if (loading || !hasMore) return;
     setPage(state => state + 1);
   };
+  /** 重置列表 */
+  const handleReset = () => {
+    setList([]);
+    setPage(page => {
+      if (page === 1) {
+        // 若页码本来就是1重置为1时依赖项没有变化，这里强制请求下
+        handleRequest();
+      }
+      return 1;
+    });
+    setHasMore(false);
+    setLoading(false);
+    syncRef.current.hasMore = false;
+    syncRef.current.loading = false;
+  };
   // 绑定触底的消息订阅
   useEffect(() => {
     emitter.on(MittEvent.MAIN_IS_BOTTOM_DOWN, handleSrcollBottom);
@@ -65,11 +80,19 @@ export function useList<T>({ request, pageSize = 20 }: Hooks<T>) {
   }, [page]);
 
   return {
+    /** model */
     list,
+    /** 正在加载 */
     loading,
+    /** 还有更多吗 */
     hasMore,
+    /** 同步数据 */
     syncRef,
+    /** 页码 */
     page,
+    /** 页长度 */
     pageSize,
+    /** 重置列表 */
+    handleReset,
   };
 }
