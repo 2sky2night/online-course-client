@@ -5,6 +5,7 @@ interface Props extends PropsWithChildren {
   /** 多少行省略？--- 默认1行省略 */
   lineClamp?: number;
   style?: React.CSSProperties;
+  className?: string;
 }
 
 const useStyles = (line: number) =>
@@ -32,11 +33,16 @@ const useStyles = (line: number) =>
         },
   );
 
-export function Ellipsis({ children, lineClamp = 1, style = {} }: Props) {
+export function Ellipsis({
+  children,
+  lineClamp = 1,
+  style = {},
+  className = "",
+}: Props) {
   const { styles } = useStyles(lineClamp)();
   return (
     <span
-      className={styles.text}
+      className={`${[styles.text, className].join(" ")}`}
       style={style}>
       {children}
     </span>
