@@ -9,4 +9,11 @@ export interface UserState {
   logout: () => void;
   /** 是否登录了 */
   isLogin: () => boolean;
+  /** 更新用户信息 */
+  updateUser: (data: {
+    username: string;
+    age: number | null;
+    gender: boolean | null;
+    avatar: string | null;
+  }) => void;
 }

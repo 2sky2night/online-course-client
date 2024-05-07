@@ -37,6 +37,23 @@ export const useUserStore = create(
           const userInfo = get().userInfo;
           return Boolean(userInfo && Token.getToken());
         },
+        updateUser({ username, age, avatar, gender }) {
+          set(state => {
+            if (state.userInfo) {
+              return {
+                userInfo: {
+                  ...state.userInfo,
+                  user_name: username,
+                  age,
+                  avatar,
+                  gender,
+                },
+              };
+            } else {
+              return state;
+            }
+          });
+        },
       };
     },
     {
