@@ -8,7 +8,10 @@ export const useCommentItemStyles = createStyles(({ token, responsive }) => {
     },
     content: {
       padding: "5px",
+      marginLeft: "5px",
       flexGrow: "1",
+      borderBottom: "0.5px solid",
+      borderColor: token.colorBorder,
     },
     username: {
       fontSize: token.fontSizeLG,
@@ -27,10 +30,20 @@ export const useCommentItemStyles = createStyles(({ token, responsive }) => {
       color: token.colorTextDescription,
       fontSize: token.fontSizeSM,
     },
+    queryReply: {
+      cursor: "pointer",
+      ":hover": {
+        color: token.colorPrimary,
+      },
+    },
+    toReply: {
+      cursor: "pointer",
+      ":hover": {
+        color: token.colorPrimary,
+      },
+    },
     comment: {
-      borderBottom: "1px solid",
-      borderColor: token.colorBorder,
-      paddingBottom: "8px",
+      paddingBottom: "10px",
     },
   };
 });
