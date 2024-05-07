@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 
 import { LoginModal } from "@/components";
@@ -16,6 +16,8 @@ export default function Main() {
   const navigate = useNavigate();
   // 是否展示登录的模态框
   const [show, setShow] = useState(false);
+  /** 主视图dom */
+  const mainDOMRef = useRef<HTMLDivElement | null>(null);
   /** 是否登录了 */
   const getIsLogin = useUserStore(s => s.isLogin);
   /** 打开登录弹窗 */
@@ -30,6 +32,7 @@ export default function Main() {
       emitter.emit(MittEvent.MAIN_IS_BOTTOM_DOWN);
   };
   // 路由后置守卫
+  // TODO 能不能抽离到router中
   useAuthRoute(route => {
     // 1.修改网页标题
     globalThis.document.title = [
@@ -51,6 +54,8 @@ export default function Main() {
       // 打开弹窗
       handleOpenLoginModal();
     }
+    // 3.让mian组件滚动到顶部
+    mainDOMRef.current?.scroll({ top: 0 });
   });
   // 订阅打开登录弹窗的事件
   useEffect(() => {
@@ -65,6 +70,7 @@ export default function Main() {
     <>
       <div
         className={styles.mainContainer}
+        ref={mainDOMRef}
         onScroll={handleScroll}>
         <div className="max-w-7xl m-auto py-3 px-2">
           <Outlet />
