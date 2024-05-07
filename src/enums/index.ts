@@ -26,6 +26,8 @@ export enum Page {
   VIDEO_INFO = "/video",
   /** 个人中心 */
   MY = "/my",
+  /** 编辑用户 */
+  EDIT_USER = "/my/edit",
 }
 
 /** zustand持久化存储key */

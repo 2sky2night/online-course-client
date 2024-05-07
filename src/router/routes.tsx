@@ -3,6 +3,7 @@ import CollectionInfo from "@/pages/collection-info";
 import NotFoundPage from "@/pages/error/404";
 import Index from "@/pages/index";
 import MyPage from "@/pages/my";
+import EditUser from "@/pages/my/pages/edit";
 import AlipayPage from "@/pages/oauth/pages/alipay";
 import GiteePage from "@/pages/oauth/pages/gitee";
 import GithubPage from "@/pages/oauth/pages/github";
@@ -22,11 +23,24 @@ export const routes: RouteItem[] = [
   },
   {
     path: "/my",
-    element: <MyPage />,
-    meta: {
-      title: "个人中心",
-      needAuth: true,
-    },
+    children: [
+      {
+        index: true,
+        element: <MyPage />,
+        meta: {
+          title: "个人中心",
+          needAuth: true,
+        },
+      },
+      {
+        path: "edit",
+        element: <EditUser />,
+        meta: {
+          title: "编辑信息",
+          needAuth: true,
+        },
+      },
+    ],
   },
   {
     path: "/oauth",
