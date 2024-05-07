@@ -5,4 +5,6 @@ export enum DropDownKey {
   THEME = "theme",
   /** 登录 */
   LOGIN = "login",
+  /** 个人中心 */
+  MY = "my",
 }

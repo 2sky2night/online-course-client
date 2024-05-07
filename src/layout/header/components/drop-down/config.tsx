@@ -3,6 +3,7 @@ import {
   LogoutOutlined as LogoutIcon,
   MoonOutlined as DrarkIcon,
   SunOutlined as LightIcon,
+  UserOutlined as UserIcon,
 } from "@ant-design/icons";
 import type { MenuProps } from "antd";
 
@@ -32,6 +33,11 @@ export const dropDownRender = (isLogin: boolean): MenuProps["items"] => {
   return isLogin
     ? [
         ...baseItem,
+        {
+          key: DropDownKey.MY,
+          label: "个人中心",
+          icon: <UserIcon />,
+        },
         {
           key: DropDownKey.LOGOOUT,
           label: "登出",

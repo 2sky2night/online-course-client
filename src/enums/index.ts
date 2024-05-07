@@ -24,6 +24,8 @@ export enum Page {
   PARTITIONS = "/partitions",
   /** 视频详情，需要传递路径参数 */
   VIDEO_INFO = "/video",
+  /** 个人中心 */
+  MY = "/my",
 }
 
 /** zustand持久化存储key */

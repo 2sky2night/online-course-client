@@ -39,6 +39,7 @@ export function Dropdown() {
       emitter.emit(MittEvent.OPEN_LOGIN_MODAL);
     },
     [DropDownKey.LOGOOUT]: () => setShowModal(true),
+    [DropDownKey.MY]: () => navigate(Page.MY),
   };
   /** 确认登出的回调 */
   const handleConfrimLogout = () => {
