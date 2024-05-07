@@ -15,3 +15,6 @@ export type VideoInfo = API.RVideoInfoDto;
 
 /** 评论列表项 */
 export type Comment = API.CommentDtoA;
+
+/** 回复项 */
+export type Reply = API.ReplyDtoA;
